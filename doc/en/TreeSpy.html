@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
+<title>TreeSpy</title>
+</head>
+<body>
+<center>
+<h1>TreeSpy</h1>
+</center>
+<br>
+<h2>1. What is TreeSpy?</h2>
+<br>
+<p>
+The TreeSpy add-on for NVDA displays a tree-view control displaying the hierarchical structure of NVDA objects for the application which was in the foreground
+when the TreeSpy was opened.
+</p>
+<br>
+<p>
+It also shows the following properties of each of the objects displayed in the tree-view:
+</p>
+<br>
+<ul>
+<li>.windowClassName (this property is used for the text label of each tree-view node.</li>
+<li>.windowControlID.</li>
+<li>.name.</li>
+<li>.value.</li>
+<li>.role.</li>
+<li>A list-view showing each of the .state properties for the selected object.</li>
+<li>Absolute position (left, top, width and height) of the selected object relative to the desktop.</li>
+<li>Relative position (left, top, width and height) of the selected object, relative to the top-left corner of the foreground window or dialog client area.</li>
+</ul>
+<br>
+<p>Notes:</p>
+<br>
+<ul>
+<li>The order of the above list is the same as the tab-order of the TreeSpy window.</li>
+<li>One or more of the above may be blank.  The .windowControlID will always contain a numeric, but .name, .value and .role may either be blank or unknown.  The list-view of states may also be empty.</li>
+<li>When TreeSpy is first opened, the tree-view is collapsed.  That is, only the top level node, the foreground application window is visible. Use the left and right cursor keys and the up and down keys in the normal way to navigate the tree, to expand or collapse branches etc.</li>
+<li>Absolute and relative positions are each displayed in a group-box containing four text boxes; left, top, right and height.</li>
+<li>Text-boxes are not read-only.  However changing values in them has no effect.</li>
+</ul>
+<br>
+<h2>2. What is TreeSpy for?</h2>
+<br>
+<p>
+I have found that in writing NVDA app-modules to improve the accessibility of some 
+applications, a common task is to have to either rename some controls or give them a name when they don't have one which is exposed to NVDA.
+</p>
+<br>
+<p>
+Some development tools do not create true static labels to describe the function of input controls, but instead write text strings to the screen using GDI functions.  This can leave input elements such as text boxes etc. 'nameless' as far as NVDA is concerned.
+</p>
+<br>
+<p>
+So I wanted to be able to view the structure of the hierarchy of objects created by NVDA, in order to be able to identify nameless controls and thence write an app-module for the application which could rename them.  One method which helps in this process
+is to be able to visualise the hierarchical structure of an application as NVDA sees it, and in particular to be able to view
+
+the parentage of nameless controls.  The NVDA Python console is excellent for this but the tree-view showing the structure is also very useful.
+</p>
+<br>
+<p>
+Sometimes the only way to identify which control is which is via it's position on-screen (X and Y).  This is also useful
+when writing applications since no other way exists for a blind developer to check whether screen formatting is correct.  Those development tools
+which use sizers (like wx.Python, wxWidgets and some Java tools) make GUI programming
+easy for the visually impaired if we can see the X and Y position and dimensions of controls as we create them.  In fact while I was writing TreeSpy I was using the X and Y positions of it's own controls to both position them and learn how to use sizers in wx.Python.
+</p>
+<br>
+<h2>3. Commands</h2>
+<br>
+<h3>3.1. Opening TreeSpy</h3>
+<br>
+<dl>
+<dt><kbd>shift+NVDA+O</kbd></dt>
+</dl>
+<br>
+<h3>3.2. Closing TreeSpy</h3>
+<br>
+<p>
+There are the usual ways of closing TreeSpy.  There is a File->Exit menu option, pressing alt+f4 will close it in the usual way, and in addition pressing the 'escape key will close it.
+</p>
+<br>
+<h3>3.3. Other commands</h3>
+<br>
+<dl>
+<dt><kbd>NVDA+left arrow</kbd></dt>
+<dd>Speak the windowClassName of the focused object</dd>
+</dl>
+<br>
+<dl>
+<dt><kbd>NVDA+right arrow</kbd></dt>
+<dd>Speak the windowControlID of the focused object</dd>
+</dl>
+<br>
+<p>
+Notes:
+</p>
+<br>
+<ul>
+<li>The above two commands, if used when the TreeSpy window has focus, the spoken values will be for controls in the TreeSpy window itself!</li>
+<li>The above two functions to speak the windowClassName and windowControlID are duplicate functionality of another plug-in, the name of which I cannot currently remember.  This may cause TreeSpy and the other plug-in to clash.</li>
+</ul>
+<br>
+<h3>4. License</h3>
+<br>
+<p>
+This NVDA global plug-in is licensed in the same way as NVDA itself.  Included in the TreeSpy.nvda-addon is a copy of the Gnu General Public License version 2.
+</p>
+<br>
+<hr>
+<center>
+Mike Ray, October 2013
+</center>
+<br>
+</body>
+</html>
+
